@@ -4,22 +4,26 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "setup": "npm i && dfx canister create backend && dfx generate backend && dfx deploy",
-    "start": "run-p frontend backend",
+    "setup": "npm i && icp network start -d && icp deploy && npm run icp:env",
+    "start": "run-p frontend",
     "frontend": "vite --port 3000",
     "backend": "mo-dev --generate --deploy -y",
+    "deploy:backend": "npx @icp-sdk/icp-cli deploy backend",
+    "deploy": "npx @icp-sdk/icp-cli deploy",
     "build": "tsc && vite build",
     "test": "run-s test:backend test:frontend",
     "test:frontend": "vitest run",
     "test:backend": "mo-test",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\" \"backend/**/*.mo\"",
     "sources": "mops sources",
+    "icp:env": "node scripts/icp-env.mjs",
     "postinstall": "mops install"
   },
   "dependencies": {
-    "@ic-reactor/react": "^1.14.6",
+    "@ic-reactor/react": "^3.0.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",

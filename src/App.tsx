@@ -1,18 +1,20 @@
-import { useQueryCall, useUpdateCall } from '@ic-reactor/react';
 import './App.css';
 import motokoLogo from './assets/motoko_moving.png';
 import motokoShadowLogo from './assets/motoko_shadow.png';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
+import { useBackendMutation, useBackendQuery } from './config';
 
 function App() {
-  const { data: count, refetch } = useQueryCall({
+  const { data: count, refetch } = useBackendQuery({
     functionName: 'get',
   });
 
-  const { call: increment, loading } = useUpdateCall({
+  const { mutate: increment, isPending } = useBackendMutation({
     functionName: 'inc',
-    onSuccess: refetch,
+    onSuccess: () => {
+      refetch();
+    },
   });
 
   return (
@@ -40,7 +42,7 @@ function App() {
       </div>
       <h1>Vite + React + Motoko</h1>
       <div className="card">
-        <button onClick={increment} disabled={loading}>
+        <button onClick={increment} disabled={isPending}>
           count is {count?.toString() ?? 'loading...'}
         </button>
         <p>

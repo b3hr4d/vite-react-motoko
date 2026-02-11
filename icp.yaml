@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/dfinity/icp-cli/main/docs/schemas/icp-yaml-schema.json
+
+canisters:
+  - name: backend
+    recipe:
+      type: '@dfinity/motoko'
+      configuration:
+        main: backend/Backend.mo
+        candid: src/declarations/backend/backend.did
+  - name: frontend
+    recipe:
+      type: '@dfinity/asset-canister'
+      configuration:
+        dir: dist
+        build:
+          - npm install
+          - npm run build
