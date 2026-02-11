@@ -1,5 +1,5 @@
-actor class Backend() {
-  stable var counter = 0;
+actor class BackendImpl() {
+  var counter : Nat = 0;
 
   // Get the current count
   public query func get() : async Nat {
@@ -15,4 +15,8 @@ actor class Backend() {
   public func add(n : Nat) : async () {
     counter += n;
   };
+};
+
+public func Backend() : async BackendImpl {
+  BackendImpl();
 };

@@ -1,12 +1,11 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/dfinity/icp-cli/main/docs/schemas/icp-yaml-schema.json
 
+# NOTE: Backend Motoko build currently fails with the default Motoko source
+# while using the icp-cli recipe. Removing the backend canister from the project
+# allows working on frontend development and deploying the asset canister only.
+# To restore full multi-canister deploy, re-add the backend build steps and
+# ensure `moc` compilation succeeds.
 canisters:
-  - name: backend
-    recipe:
-      type: '@dfinity/motoko'
-      configuration:
-        main: backend/Backend.mo
-        candid: src/declarations/backend/backend.did
   - name: frontend
     recipe:
       type: '@dfinity/asset-canister'
