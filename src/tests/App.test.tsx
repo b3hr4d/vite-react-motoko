@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import App from '../App';
 import { StrictMode } from 'react';
-import { backendReactor } from '../config';
+import { backendReactor } from '../canisters/backend';
 
 describe('App', () => {
   it('renders as expected', () => {

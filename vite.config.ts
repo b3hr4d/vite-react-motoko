@@ -35,7 +35,6 @@ export default defineConfig({
           name: 'backend',
           didFile: './backend/backend.did',
           clientManagerPath: '../../lib/client',
-          useDisplayReactor: true,
         },
       ],
     }),

@@ -42,7 +42,7 @@ function App() {
       </div>
       <h1>Vite + React + Motoko</h1>
       <div className="card">
-        <button onClick={increment} disabled={isPending}>
+        <button onClick={() => increment([])} disabled={isPending}>
           count is {count?.toString() ?? 'loading...'}
         </button>
         <p>
