@@ -2,8 +2,7 @@
 import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
-import environment from 'vite-plugin-environment';
-import { icpBindgen } from '@icp-sdk/bindgen/plugins/vite';
+import { icReactorPlugin } from '@ic-reactor/vite-plugin';
 
 dotenv.config();
 
@@ -30,13 +29,16 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    // Generate bindings from .did files during dev and build
-    icpBindgen({
-      didFile: './backend/Backend.did',
-      outDir: './src/declarations/backend',
+    icReactorPlugin({
+      canisters: [
+        {
+          name: 'backend',
+          didFile: './backend/backend.did',
+          clientManagerPath: '../../lib/client',
+          useDisplayReactor: true,
+        },
+      ],
     }),
-    environment('all', { prefix: 'CANISTER_' }),
-    environment('all', { prefix: 'DFX_' }),
   ],
   cacheDir: '../node_modules/.vite',
   test: {

@@ -17,6 +17,7 @@
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\" \"backend/**/*.mo\"",
     "sources": "mops sources",
     "icp:env": "node scripts/icp-env.mjs",
+    "generate:hooks": "npx @ic-reactor/cli sync -c backend",
     "postinstall": "mops install"
   },
   "dependencies": {
@@ -27,6 +28,8 @@
     "react-query": "^3.39.3"
   },
   "devDependencies": {
+    "@ic-reactor/cli": "^0.0.0-beta.1",
+    "@ic-reactor/vite-plugin": "^0.1.0",
     "@icp-sdk/bindgen": "^0.2.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",

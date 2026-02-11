@@ -3,7 +3,7 @@ import motokoLogo from './assets/motoko_moving.png';
 import motokoShadowLogo from './assets/motoko_shadow.png';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
-import { useBackendMutation, useBackendQuery } from './config';
+import { useBackendMutation, useBackendQuery } from './canisters/backend';
 
 function App() {
   const { data: count, refetch } = useBackendQuery({
