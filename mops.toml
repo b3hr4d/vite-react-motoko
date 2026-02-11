@@ -1,5 +1,5 @@
 [dependencies]
-base = "0.7.4"
+base = "0.16.0"
 
 [toolchain]
-moc = "1.1.0"
+moc = "0.16.0"

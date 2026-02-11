@@ -5,7 +5,10 @@ import { createActorHooks } from '@ic-reactor/react';
 import { _SERVICE } from './declarations/backend/backend.did';
 
 const queryClient = new QueryClient();
-const clientManager = new ClientManager({ queryClient, withProcessEnv: true });
+const clientManager = new ClientManager({
+  queryClient,
+  withCanisterEnv: true,
+});
 
 export const backendReactor = new Reactor<_SERVICE>({
   clientManager,
