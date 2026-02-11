@@ -1,3 +1,6 @@
 {
-    "recommendations": ["dfinity-foundation.vscode-motoko"]
+  "recommendations": [
+    "dfinity-foundation.vscode-motoko",
+    "b3hr4d.colorful-darkplus"
+  ]
 }

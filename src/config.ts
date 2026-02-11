@@ -1,8 +1,6 @@
 import { QueryClient } from '@tanstack/react-query';
 import { ClientManager, Reactor } from '@ic-reactor/react';
-import { canisterId, idlFactory } from './declarations/backend';
 import { createActorHooks } from '@ic-reactor/react';
-import { _SERVICE } from './declarations/backend/backend.did';
 
 const queryClient = new QueryClient();
 const clientManager = new ClientManager({
@@ -10,11 +8,10 @@ const clientManager = new ClientManager({
   withCanisterEnv: true,
 });
 
-export const backendReactor = new Reactor<_SERVICE>({
+export const backendReactor = new Reactor<typeof Backend>({
   clientManager,
   name: 'backend',
-  canisterId,
-  idlFactory,
+  idlFactory: idlFactory,
 });
 
 export const {

@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
 import environment from 'vite-plugin-environment';
+import { icpBindgen } from '@icp-sdk/bindgen/plugins/vite';
 
 dotenv.config();
 
@@ -29,6 +30,11 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    // Generate bindings from .did files during dev and build
+    icpBindgen({
+      didFile: './backend/Backend.did',
+      outDir: './src/declarations/backend',
+    }),
     environment('all', { prefix: 'CANISTER_' }),
     environment('all', { prefix: 'DFX_' }),
   ],
